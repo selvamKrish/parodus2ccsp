@@ -300,6 +300,7 @@ static int setParamAttributes(param_t *attArr,int paramCount, money_trace_spans 
 			CcspBaseIf_SetCallback2(bus_handle, "parameterValueChangeSignal", ccspWebPaValueChangedCB, NULL);
 #endif
 		}
+		WalInfo("Total count1 is %d\n",count1);
 		attriStruct[cnt].parameterName = malloc( sizeof(char) * MAX_PARAMETERNAME_LEN);
 		walStrncpy(attriStruct[cnt].parameterName,paramName,MAX_PARAMETERNAME_LEN);
 		WalPrint("attriStruct[%d].parameterName : %s\n",cnt,attriStruct[cnt].parameterName);
@@ -307,10 +308,12 @@ static int setParamAttributes(param_t *attArr,int paramCount, money_trace_spans 
 		attriStruct[cnt].notification = notificationType;
 		WalPrint("attriStruct[%d].notification : %d\n",cnt,attriStruct[cnt].notification );	
 		free_componentDetails(tempCompName,tempDbusPath,count1);
+		WalInfo("After free_componentDetails of temp\n");
 	}
-	
+	WalInfo("Before error check %d\n",error);
 	if(error != 1)
 	{
+		WalInfo("Now call CcspBaseIf_setParameterAttributes \n");
 		ret = CcspBaseIf_setParameterAttributes(bus_handle,compName[0], dbusPath[0], 0, attriStruct, paramCount);
 		WalPrint("=== After SPA == ret = %d\n",ret);
 		if (CCSP_SUCCESS != ret)
