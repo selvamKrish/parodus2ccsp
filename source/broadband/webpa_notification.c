@@ -1120,7 +1120,7 @@ static WDMP_STATUS processFactoryResetNotification(ParamNotify *paramNotify, uns
 	WDMP_STATUS status = WDMP_FAILURE;
 	
 	WalPrint("Inside processFactoryResetNotification ..\n");
-	snprintf(newCMC, sizeof(newCMC), "%d", CHANGED_BY_FACTORY_DEFAULT);
+	snprintf(newCMC, sizeof(newCMC), "%d", atoi(newCMC) |CHANGED_BY_FACTORY_DEFAULT);
 	WalPrint("newCMC value is %s\n", newCMC);
 
 	dbCID = getParameterValue(PARAM_CID);
