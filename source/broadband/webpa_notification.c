@@ -1120,7 +1120,7 @@ static WDMP_STATUS processFactoryResetNotification(ParamNotify *paramNotify, uns
 	char *strCMC = NULL;
 	unsigned int oldCMC,newCMC;
 	WDMP_STATUS status = WDMP_FAILURE;
-	
+
 	WalPrint("Inside processFactoryResetNotification ..\n");
 	dbCID = getParameterValue(PARAM_CID);
 	WalPrint("dbCID value is %s\n", dbCID);
